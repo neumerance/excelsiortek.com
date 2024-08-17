@@ -10,8 +10,11 @@ WORKDIR /app
 # Copy the package.json and yarn.lock files
 COPY package.json yarn.lock ./
 
+# Set NODE_ENV to production to ensure proper build
+ENV NODE_ENV=production
+
 # Install the dependencies using Yarn
-RUN yarn install
+RUN yarn install --production
 
 # Copy the rest of the application code
 COPY . .
